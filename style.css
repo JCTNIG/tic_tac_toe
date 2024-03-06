@@ -1,0 +1,103 @@
+
+
+body {
+  display: grid;
+  grid-template-rows: 1fr, 4fr, 0.5fr;
+  background-color: #52ee09;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;align-items: center;
+  background-color:
+  aqua;
+}
+
+button {
+  background-color: rgb(12, 236, 90);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  margin-bottom: 20px;
+  color: white;
+
+}
+
+button:hover {
+  background-color: rgb(205, 140, 222);
+}
+
+.restartRefresh {
+  display: none;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+  background-color: beige;
+  padding: 2em;
+  gap: 2em;
+}
+
+.gameBox {
+  display: grid;
+  grid-template-rows: repeat(3, minmax(1fr, 20px));
+  grid-template-columns: repeat(3, auto);
+  background-color: rgb(12, 236, 90);
+  border: 1px solid;
+  border-radius: 12px;
+  height: 400px;
+  width: 100%;
+
+  gap: 5px;
+  padding: 0.5em;
+}
+
+.gameCell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  height: 2em;
+  min-width: 100px;
+  font-size: 3em;
+  background-color: aqua;
+  color: rgb(205, 140, 222);
+  border-radius: 8px;
+  text-align: center;
+
+  
+  
+
+}
+
+.gameCell:hover {
+  background-color: rgba(206, 140, 222, 0.581);
+}
+
+.scoreBoard {
+  height: 422px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.gameStatus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #04654b;
+  color: red;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  height: 30%;
+}
+
+.footer {
+  background-color: #04654b;
+  color: white;
+  text-align: center;
+}

@@ -9,6 +9,50 @@
   <script src="./script.js" defer></script>
 </head>
 <body>
-  
+  <div class="header control">
+    <h1>TIC TAC TOE</h1>
+    <div>
+      <dialog id="nameDialog">
+        <form action="get" class="nameForm">
+          <div class="inputField">
+            <p><input type="text" required id="playerX" placeholder="Player 1" name="playerX"></p>
+            <p>VS</p>
+            <p><input type="text" required placeholder="Player 2" id="playerO" name="playerO"></p>
+          </div>
+          <button class="startButton">START</button>
+        </form>
+      </dialog>
+      <button class="enterButton">Enter Players Name</button>
+    </div>
+    <div class="restartRefresh">
+      <button class="restartButton">Restart</button>
+      <button class="refreshButton">Refresh</button>
+    </div>
+  </div>
+  <div class="main">
+    <div class="gameBox">
+      <div class="gameCell" id="0"></div>
+      <div class="gameCell" id="1"></div>
+      <div class="gameCell" id="2"></div>
+      <div class="gameCell" id="3"></div>
+      <div class="gameCell" id="4"></div>
+      <div class="gameCell" id="5"></div>
+      <div class="gameCell" id="6"></div>
+      <div class="gameCell" id="7"></div>
+      <div class="gameCell" id="8"></div>
+    </div>
+    <div class="scoreBoard">
+      <div class="gameStatus"></div>
+      <div class="scoreBox">
+        <h1 class="playerXScore"></h1>
+        <h1>:</h1>
+        <h1 class="playerOScore"></h1>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <p> <i> @JC TECH </i></p>
+  </div>
+
 </body>
 </html>
