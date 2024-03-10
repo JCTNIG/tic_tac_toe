@@ -9,9 +9,11 @@ body {
 
 .header {
   display: flex;
-  justify-content: space-between;align-items: center;
+  justify-content: space-between;
+  align-items: center;
   background-color:
   aqua;
+  padding: 12px;
 }
 
 button {
@@ -19,7 +21,6 @@ button {
   border: none;
   border-radius: 8px;
   padding: 8px 20px;
-  margin-bottom: 20px;
   color: white;
 
 }
@@ -45,8 +46,6 @@ button:hover {
   display: grid;
   grid-template-rows: repeat(3, minmax(1fr, 20px));
   grid-template-columns: repeat(3, auto);
-  background-color: rgb(12, 236, 90);
-  border: 1px solid;
   border-radius: 12px;
   height: 400px;
   width: 100%;
@@ -80,7 +79,6 @@ button:hover {
 .scoreBoard {
   height: 422px;
   width: 100%;
-  border: 1px solid black;
   border-radius: 8px;
 }
 
@@ -88,12 +86,16 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #04654b;
   color: red;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 1.5rem;
   border-radius: 8px;
   height: 30%;
+}
+
+.scoreBox {
+  display: flex;
+  justify-content: space-around;
 }
 
 .footer {

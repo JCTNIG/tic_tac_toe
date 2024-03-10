@@ -1,11 +1,22 @@
 const ticTacToeGame = (() => {
   const Player = (name, symbol) => {
-    return {name, symbol};
+    let score = 0;
+    const updateScore = () => {
+      score++;
+    }
+    const getScore = () => {
+      return score
+    }
+
+    return {name, symbol, updateScore, getScore};
   }
+
+
+
 
   const GameBoard = () => {
 
-    let board = ['', '', '', '', '', '', '', '', ''];
+    let board = [ '', '', '', '', '', '', '', '', ''];
 
     const markCel = (index, symbol) => {
       if (board[index] === '') {
@@ -59,21 +70,29 @@ const ticTacToeGame = (() => {
 
 
   const gameControl = () => {
-    let player1;
-    let player2;
+    const player1 = Player( 'Player X', 'X');
+    
+    const player2 = Player('Player O', 'O');
+
     let currentPlayer;
     let gameStatus = true; 
-    const gameBoard = GameBoard()
+    const gameBoard = GameBoard();
     const resetWinCell = () =>{   gameBoard.setWinCells();
-    }
+    };
  
-    const play = (name1, name2) => {
-      player1 = Player(name1 = 'Player 1', 'X');
-      player2 = Player(name2 = 'Player 2', 'O');
+    const play = () => {
 
-      currentPlayer = player1;
+      const playerX = document.getElementById('playerX').value;
+      
+      const playerO = document.getElementById('playerO').value;
+
+      player1.name = playerX || 'Player X';
+      player2.name = playerO || 'Player O';
+
       gameBoard.boardReset();
       gameStatus = true;
+      
+      changePlayer();
 
       display()
       //cellDisplay();
@@ -83,12 +102,15 @@ const ticTacToeGame = (() => {
     
     const cells = document.querySelectorAll('.gameCell');
 
+    const xScore = document.querySelector('.playerXScore');
+    const oScore = document.querySelector('.playerOScore');
+
     const refreshCells = () => {
       cells.forEach((cell) => {cell.textContent = ''})
     }
 
     const refreshPlayStatus = () => {
-      playStatus.textContent = '';
+      playStatus.textContent = `${currentPlayer.name}'s turn`;
     }
 
     const setPlay = (index) => {
@@ -101,9 +123,13 @@ const ticTacToeGame = (() => {
         display();
         cellDisplay
         (index);
+        
         if (gameBoard.checkWin()) {
           console.log(`${currentPlayer.name} Wins!`);
           playStatus.textContent = `${currentPlayer.name} Wins!`;
+          currentPlayer.updateScore();
+          xScore.textContent =+ player1.getScore();
+          oScore.textContent =+ player2.getScore();
           gameStatus = false;
         } else if (gameBoard.checkTie()) {
           console.log(`It's a Tie!`);
@@ -111,11 +137,15 @@ const ticTacToeGame = (() => {
           gameStatus = false;
         } else {
           changePlayer();
+          playStatus.textContent = `${currentPlayer.name}'s turn`;
         }
+
       } else {
         console.log("This cell is already marked. Try again.");
       }
+
     }
+    
 
     const display = () => {
       const board = gameBoard.getBoard()
@@ -209,11 +239,11 @@ const domDisplay = () => {
   }
 
   const startFunction = () => {
-    const playerValueX = playerX.value;
-  const playerValueO = playerO.value;
-    game.play(playerValueX, playerValueO);
+    game.play();
+    const playStatusStart = document.querySelector('.gameStatus')
+    playStatusStart.textContent = 'Player X to start';
 
-  cell.forEach((item, index) => { 
+  cell.forEach((item) => { 
     const itemId = parseInt(item.id);
     item.addEventListener('click', () => {
       game.setPlay(itemId);
@@ -234,13 +264,12 @@ const domDisplay = () => {
       cell.style.backgroundColor = '';
     })
     document.querySelector('.startButton').removeEventListener('click', preventStart);
-    const playerValueX = playerX.value;
-  const playerValueO = playerO.value;
-    game.play(playerValueX,playerValueO);
+  
+    game.play();
 
     game.refreshCells();
     game.refreshPlayStatus();
-    game.changePlayer();
+  
   }
 
   enter.addEventListener('click', () => {
